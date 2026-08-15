@@ -1,0 +1,25 @@
+[2026-08-15 21:00:00,102] [INFO] [imminch-core] Initializing Imminch container daemon version 4.2.0...
+[2026-08-15 21:00:00,150] [DEBUG] [imminch-config] Loading configuration profiles from /etc/imminch/config.yaml.
+[2026-08-15 21:00:00,210] [INFO] [imminch-storage] Establishing connection to local SQLite metadata database at /var/lib/imminch/meta.db.
+[2026-08-15 21:00:00,345] [INFO] [imminch-storage] Database schema version 41 verified successfully.
+[2026-08-15 21:00:00,502] [WARN] [imminch-network] Primary DNS resolver 10.0.0.2 is unresponsive. Falling back to secondary resolver 8.8.8.8.
+[2026-08-15 21:00:01,012] [INFO] [imminch-worker] Spawned worker pool with 8 concurrent threads.
+[2026-08-15 21:00:01,150] [INFO] [imminch-server] HTTP API listening on interface 0.0.0.0, port 8080.
+[2026-08-15 21:05:22,810] [INFO] [imminch-auth] Received token authentication request from client IP 192.168.1.45.
+[2026-08-15 21:05:22,950] [ERROR] [imminch-auth] Authentication failed for user 'admin': token expired at 2026-08-15T20:59:00Z.
+[2026-08-15 21:10:04,330] [INFO] [imminch-sync] Starting scheduled synchronization job for remote endpoint sync.internal.net.
+[2026-08-15 21:10:05,110] [DEBUG] [imminch-sync] Handshake successful with remote peer ID node-7b.
+[2026-08-15 21:12:40,900] [ERROR] [imminch-sync] Connection reset by peer while streaming batch 142.
+[2026-08-15 21:12:40,905] [WARN] [imminch-sync] Retrying synchronization batch 142 in 30 seconds (Attempt 1 of 3).
+[2026-08-15 21:13:11,102] [INFO] [imminch-sync] Synchronization batch 142 successfully transmitted on retry.
+[2026-08-15 21:20:00,001] [INFO] [imminch-metrics] Routine health check initiated.
+[2026-08-15 21:20:00,045] [WARN] [imminch-metrics] Container memory consumption reached 82 percent of threshold limit.
+[2026-08-15 21:25:12,440] [ERROR] [imminch-plugin] Unhandled exception in plugin loader while parsing module 'fortunes-ext': ModuleNotFoundError: No module named 'fortune_mod'.
+[2026-08-15 21:25:12,442] [ERROR] [imminch-plugin] Failed to initialize extension package. Skipping plugin registration.
+[2026-08-15 21:30:15,880] [INFO] [imminch-api] Incoming POST request to /api/v1/jobs/submit from 10.0.1.15.
+[2026-08-15 21:30:15,901] [DEBUG] [imminch-api] Payload parsed successfully. Assigned job ID: job-9942-alpha.
+[2026-08-15 21:30:16,120] [FATAL] [imminch-worker] Worker thread 4 encountered a segmentation fault while executing task job-9942-alpha.
+[2026-08-15 21:30:16,125] [FATAL] [imminch-core] Critical error registered. Initiating safe mode shutdown protocol.
+[2026-08-15 21:30:16,200] [INFO] [imminch-storage] Flushing pending write transactions to SQLite database.
+[2026-08-15 21:30:16,500] [INFO] [imminch-server] Stopping HTTP listener. Closing active sockets.
+[2026-08-15 21:30:17,000] [INFO] [imminch-core] Imminch container daemon stopped cleanly with exit code 139.
