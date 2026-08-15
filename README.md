@@ -66,7 +66,7 @@ python3 log_analyzer.py /path/to/access.log --provider anthropic
 Test it right away with the included sample log:
 
 ```
-python3 log_analyzer.py sample_access.log
+python3 log_analyzer.py sample.log
 ```
 
 ## Example output
@@ -75,38 +75,26 @@ python3 log_analyzer.py sample_access.log
 ============================================================
 LOG SUMMARY
 ============================================================
-Format: Apache/Nginx access log
-Total requests: 9  (skipped/unparseable lines: 1)
-Status codes: {'200': 5, '404': 2, '500': 1, '502': 1}
-
-Service: web application backend served behind an nginx/Apache access log.
-Errors: 404s on /missing-page and /old-page.html, likely broken links or
-removed pages. 500 on /api/data suggests an unhandled exception in that
-endpoint. 502 on the same path suggests the backend was briefly unreachable.
-Fix: add redirects for the removed pages, check application logs for the
-/api/data stack trace at that timestamp, and confirm the backend service
-was healthy and reachable at the time of the 502.
-Notable: 192.168.1.10 accounts for the majority of requests in this
-sample, worth a quick check if that's expected traffic or a single
-client hammering the server.
-============================================================
-```
-
-## Non-standard logs
-
-If the log doesn't match Common/Combined Log Format, the script says so and sends a sample of the raw content to the AI instead:
-
-```
-============================================================
-LOG SUMMARY
-============================================================
 Format: non-standard, analyzed via AI directly
-Total lines: 1
+Total lines: 25
 
-Service: an "orders" service, based on a JSON-structured log line.
-Errors: a database timeout error.
-Fix: check the database connection pool and query performance for the
-orders service around the time this occurred.
+1. Service: Imminch container daemon (version 4.2.0)
+
+2. Errors:
+- Authentication failed for user 'admin' because the provided token expired at 2026-08-15T20:59:00Z.
+- Connection reset by peer during synchronization batch 142 caused by a transient network drop or remote peer drop.
+- Plugin loader failed to parse module 'fortunes-ext' because the Python dependency 'fortune_mod' was missing (ModuleNotFoundError).
+- Worker thread 4 encountered a segmentation fault while executing task job-9942-alpha, triggering a critical safe mode shutdown.
+
+3. Fix:
+- Renew the authentication token for the admin user.
+- Verify network stability and remote peer health for sync.internal.net, as the retry succeeded automatically.
+- Install the missing 'fortune_mod' package or remove the unused 'fortunes-ext' extension package.
+- Debug the segmentation fault in job-9942-alpha (likely a memory corruption or C-extension bug in the worker task) and patch the code.
+
+4. Notable:
+- Primary DNS resolver (10.0.0.2) failed and fell back to 8.8.8.8 during startup.
+- Container memory usage reached 82 percent of the threshold limit during the routine health check.
 ============================================================
 ```
 
